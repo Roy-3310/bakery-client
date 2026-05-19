@@ -1,0 +1,182 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.page {
+  display: flex;
+  min-height: 100vh;
+}
+
+// ── 左側品牌裝飾 ─────────────────────────────────────────────
+.brand {
+  display: none;
+  flex: 0 0 44%;
+  background: $charcoal-900;
+  background-image:
+    radial-gradient(ellipse at 30% 40%, rgba($gold-600, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba($gold-400, 0.08) 0%, transparent 50%);
+  position: relative;
+  overflow: hidden;
+
+  @include lg { display: flex; align-items: center; justify-content: center; }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+}
+
+.brandInner {
+  position: relative;
+  z-index: 1;
+  padding: 3rem;
+  text-align: center;
+}
+
+.brandLogo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.brandName {
+  font-family: $font-display;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: $cream-50;
+  letter-spacing: 0.025em;
+}
+
+.brandSub {
+  font-size: 0.75rem;
+  color: $gold-400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+}
+
+.brandTagline {
+  font-size: 1rem;
+  color: rgba($cream-300, 0.7);
+  line-height: 2;
+  letter-spacing: 0.05em;
+}
+
+// ── 右側表單 ─────────────────────────────────────────────────
+.formSide {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $cream-100;
+  padding: 2rem 1.5rem;
+}
+
+.card {
+  width: 100%;
+  max-width: 400px;
+}
+
+.title {
+  font-family: $font-display;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: $charcoal-900;
+  margin-bottom: 2rem;
+  letter-spacing: 0.01em;
+}
+
+// ── Tab ───────────────────────────────────────────────────────
+.tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid $cream-300;
+}
+
+.tab {
+  flex: 1;
+  padding: 0.75rem;
+  background: none;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: $charcoal-400;
+  cursor: pointer;
+  transition: color 0.2s;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0; right: 0;
+    height: 2px;
+    background: $gold-500;
+    transform: scaleX(0);
+    transition: transform 0.25s ease;
+  }
+
+  &:hover { color: $charcoal-700; }
+}
+
+.tabActive {
+  color: $charcoal-900;
+  font-weight: 600;
+
+  &::after { transform: scaleX(1); }
+}
+
+// ── Form ──────────────────────────────────────────────────────
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: $charcoal-600;
+  letter-spacing: 0.01em;
+}
+
+.input {
+  @include form-input;
+  appearance: none;
+}
+
+.error {
+  font-size: 0.8125rem;
+  color: #dc2626;
+  background: #fee2e2;
+  border-radius: 0.5rem;
+  padding: 0.625rem 0.875rem;
+}
+
+.submitBtn {
+  @include btn-primary;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.backLink {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.8125rem;
+
+  a {
+    color: $charcoal-400;
+    text-decoration: none;
+    transition: color 0.2s;
+
+    &:hover { color: $gold-500; }
+  }
+}

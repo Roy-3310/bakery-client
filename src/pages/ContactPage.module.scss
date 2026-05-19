@@ -1,0 +1,260 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.page {
+  min-height: 100vh;
+  background: $cream-100;
+  padding-top: 6rem;
+  padding-bottom: 5rem;
+}
+
+.inner { @include container; }
+
+// ── 頁首 ────────────────────────────────────────────────────
+.pageHeader { margin-bottom: 4rem; }
+
+.eyebrow {
+  font-size: 0.75rem;
+  color: $gold-500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin: 0 0 0.75rem;
+}
+
+.heading {
+  font-family: $font-display;
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  font-weight: 600;
+  color: $charcoal-900;
+  margin: 0 0 1rem;
+}
+
+.desc {
+  font-size: 0.875rem;
+  color: $charcoal-500;
+  max-width: 28rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+// ── 雙欄 ────────────────────────────────────────────────────
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+
+  @include lg { grid-template-columns: repeat(2, 1fr); }
+}
+
+// ── 資訊卡 ──────────────────────────────────────────────────
+.infoCards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.infoCard {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1rem;
+  background: white;
+  border-radius: 0.75rem;
+  border: 1px solid $cream-300;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+.infoCardIcon {
+  width: 2.25rem; height: 2.25rem;
+  border-radius: 0.5rem;
+  background: $cream-200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: $gold-600;
+}
+
+.infoCardLabel {
+  font-size: 0.625rem;
+  color: $charcoal-400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 0.125rem;
+}
+
+.infoCardValue {
+  font-size: 0.875rem;
+  color: $charcoal-800;
+  line-height: 1.6;
+  margin: 0;
+}
+
+// ── 營業時間 ────────────────────────────────────────────────
+.hoursBox {
+  padding: 1.25rem;
+  background: $cream-200;
+  border-radius: 1rem;
+  border: 1px solid $cream-300;
+  margin-bottom: 2rem;
+}
+
+.hoursHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  color: $charcoal-700;
+}
+
+.hoursTitle {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.hoursRows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hoursRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hoursDay {
+  font-size: 0.875rem;
+  color: $charcoal-600;
+}
+
+.hoursTime {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: $charcoal-900;
+
+  &.closed { color: $charcoal-400; }
+}
+
+// ── 地圖 ────────────────────────────────────────────────────
+.mapWrapper {
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid $cream-300;
+  height: 16rem;
+
+  iframe { width: 100%; height: 100%; border: 0; }
+}
+
+// ── 聯絡表單卡 ──────────────────────────────────────────────
+.formCard {
+  background: white;
+  border-radius: 1rem;
+  border: 1px solid $cream-300;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.formHeading {
+  font-family: $font-display;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: $charcoal-900;
+  margin: 0 0 1.5rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.fieldLabel {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: $charcoal-700;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid $cream-300;
+  background: $cream-50;
+  font-size: 0.875rem;
+  color: $charcoal-800;
+  font-family: $font-sans;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+
+  &::placeholder { color: $charcoal-400; }
+
+  &:focus {
+    border-color: $gold-500;
+    box-shadow: 0 0 0 3px rgba($gold-500, 0.15);
+  }
+}
+
+.textarea {
+  resize: none;
+  min-height: 8rem;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 0.875rem;
+  background: $gold-500;
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: background 0.3s, box-shadow 0.3s;
+  font-family: $font-sans;
+
+  &:hover {
+    background: $gold-400;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.14);
+  }
+}
+
+// ── 送出成功畫面 ─────────────────────────────────────────────
+.successState {
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.successIcon {
+  width: 3.5rem; height: 3.5rem;
+  border-radius: 50%;
+  background: #fef3d8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+.successTitle {
+  font-family: $font-display;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: $charcoal-900;
+  margin: 0 0 0.5rem;
+}
+
+.successDesc {
+  font-size: 0.875rem;
+  color: $charcoal-500;
+  margin: 0;
+}

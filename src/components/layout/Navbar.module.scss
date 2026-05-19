@@ -1,0 +1,230 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// ── 外框 ────────────────────────────────────────────────────
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  background: transparent;
+  transition: background-color 0.5s $ease-apple, box-shadow 0.5s;
+
+  // Hero 狀態的頂部漸層遮罩：在深色圖片上創造對比區
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.54) 0%,
+      rgba(0, 0, 0, 0.12) 75%,
+      transparent 100%
+    );
+    pointer-events: none;
+    transition: opacity 0.5s $ease-apple;
+  }
+
+  &.scrolled {
+    background: rgba($cream-100, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 0 $cream-300;
+
+    &::before { opacity: 0; }
+
+    // scrolled 狀態：回歸深色文字
+    .logoName { color: $charcoal-900; text-shadow: none; }
+    .logoSub  { color: $gold-500; }
+    .navLink  {
+      color: $charcoal-800;
+      text-shadow: none;
+      &.active { color: $gold-600; }
+      &:hover  { color: $gold-500; }
+    }
+    .adminBtn  { color: $charcoal-700; }
+    .cartBtn   { color: $charcoal-700; }
+    .hamburger { color: $charcoal-800; }
+  }
+}
+
+// ── 內層容器 ────────────────────────────────────────────────
+.inner {
+  @include container;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  position: relative;
+  z-index: 1; // 在 ::before 漸層之上
+}
+
+// ── Logo ────────────────────────────────────────────────────
+.logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.logoName {
+  font-family: $font-display;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: white;
+  letter-spacing: 0.025em;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+  transition: color 0.45s $ease-apple, text-shadow 0.45s $ease-apple;
+}
+
+.logoSub {
+  font-size: 0.625rem;
+  color: $gold-300;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-top: 0.125rem;
+  transition: color 0.45s $ease-apple;
+}
+
+// ── 桌機導覽 ────────────────────────────────────────────────
+.desktopNav {
+  display: none;
+  align-items: center;
+  gap: 2.25rem;
+
+  @include md { display: flex; }
+}
+
+.navLink {
+  position: relative;
+  font-size: 0.875rem;
+  letter-spacing: 0.025em;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 400;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  transition: color 0.22s, text-shadow 0.45s $ease-apple;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0;
+    height: 1px; width: 0;
+    background: $gold-400;
+    transition: width 0.3s ease-out;
+  }
+
+  &:hover {
+    color: $gold-400;
+    &::after { width: 100%; }
+  }
+
+  &.active {
+    color: $gold-400;
+    font-weight: 500;
+    &::after { width: 100%; background: $gold-400; }
+  }
+}
+
+// ── 右側控制區 ──────────────────────────────────────────────
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.adminBtn {
+  padding: 0.625rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.88);
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+
+  &:hover { color: $gold-400; }
+}
+
+.cartBtn {
+  position: relative;
+  padding: 0.625rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.88);
+  transition: color 0.2s;
+
+  &:hover { color: $gold-400; }
+}
+
+.cartBadge {
+  position: absolute;
+  top: 2px; right: 2px;
+  min-width: 18px; height: 18px;
+  padding: 0 4px;
+  background: $gold-500;
+  color: white;
+  font-size: 0.625rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+// ── 漢堡選單按鈕 ────────────────────────────────────────────
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 2.5rem; height: 2.5rem;
+  padding: 0.625rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: color 0.45s $ease-apple;
+
+  @include md { display: none; }
+
+  span {
+    display: block;
+    height: 1px; width: 1.25rem;
+    background: currentColor;
+  }
+}
+
+// ── 行動選單 ────────────────────────────────────────────────
+.mobileMenu {
+  overflow: hidden;
+  background: rgba($cream-100, 0.98);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid $cream-300;
+
+  @include md { display: none; }
+}
+
+.mobileMenuInner {
+  @include container;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileLink {
+  display: block;
+  padding: 0.875rem 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: $charcoal-700;
+  text-decoration: none;
+  border-bottom: 1px solid $cream-300;
+  transition: color 0.2s;
+
+  &:last-child { border-bottom: none; }
+  &.active { color: $gold-500; }
+}

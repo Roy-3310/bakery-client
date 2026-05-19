@@ -1,0 +1,188 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.pageHeader {
+  margin-bottom: 1.5rem;
+}
+
+.heading {
+  font-family: $font-display;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: $charcoal-900;
+}
+
+.subheading {
+  font-size: 0.8125rem;
+  color: $charcoal-400;
+  margin-top: 0.25rem;
+}
+
+// ── 篩選 ─────────────────────────────────────────────────────
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.filterBtn {
+  padding: 0.4rem 0.875rem;
+  border-radius: 9999px;
+  border: 1px solid $cream-300;
+  background: white;
+  font-size: 0.8125rem;
+  color: $charcoal-600;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover { border-color: $gold-400; color: $gold-600; }
+}
+
+.filterActive {
+  background: $gold-500;
+  border-color: $gold-500;
+  color: white;
+
+  &:hover { background: $gold-400; border-color: $gold-400; color: white; }
+}
+
+.errorMsg {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 0.75rem 1rem;
+  border-radius: 0.625rem;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+// ── 表格 ─────────────────────────────────────────────────────
+.tableCard {
+  background: white;
+  border-radius: 1rem;
+  border: 1px solid $cream-200;
+  overflow: hidden;
+}
+
+.tableWrapper { overflow-x: auto; }
+
+.loadingRow,
+.emptyRow {
+  padding: 4rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: $charcoal-400;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 780px;
+
+  th, td {
+    padding: 0.875rem 1rem;
+    text-align: left;
+    font-size: 0.875rem;
+  }
+
+  th {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: $charcoal-400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: $cream-50;
+    border-bottom: 1px solid $cream-200;
+  }
+
+  td {
+    color: $charcoal-700;
+    border-bottom: 1px solid $cream-100;
+    vertical-align: middle;
+  }
+
+  tr:last-child > td { border-bottom: none; }
+}
+
+.expandedRow td {
+  background: $cream-50;
+}
+
+.orderNumber {
+  font-family: monospace;
+  font-size: 0.8125rem !important;
+  color: $charcoal-500 !important;
+  white-space: nowrap;
+}
+
+.customerName { font-weight: 500; color: $charcoal-800; }
+.customerEmail { font-size: 0.75rem; color: $charcoal-400; margin-top: 0.125rem; }
+
+.amount { font-weight: 600; white-space: nowrap; }
+
+.dateCell {
+  color: $charcoal-400 !important;
+  font-size: 0.8125rem !important;
+  white-space: nowrap;
+}
+
+// ── 狀態 Select ──────────────────────────────────────────────
+.statusSelect {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  appearance: none;
+
+  &.orange { background: #fef3c7; color: #92400e; border-color: #fcd34d; }
+  &.blue   { background: #dbeafe; color: #1e40af; border-color: #93c5fd; }
+  &.purple { background: #ede9fe; color: #5b21b6; border-color: #c4b5fd; }
+  &.teal   { background: #ccfbf1; color: #065f46; border-color: #6ee7b7; }
+  &.gray   { background: $cream-200; color: $charcoal-500; border-color: $cream-300; }
+  &.red    { background: #fee2e2; color: #991b1b; border-color: #fca5a5; }
+  &.green  { background: #d1fae5; color: #065f46; border-color: #6ee7b7; }
+
+  &:disabled { opacity: 0.6; cursor: not-allowed; }
+}
+
+.expandBtn {
+  font-size: 0.8125rem;
+  color: $gold-600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 0.25rem 0;
+  transition: color 0.2s;
+
+  &:hover { color: $gold-400; }
+}
+
+// ── 展開詳情 ─────────────────────────────────────────────────
+.detailCell {
+  background: $cream-50 !important;
+  border-top: none !important;
+  padding: 1rem 1.5rem 1.25rem !important;
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  font-size: 0.8125rem;
+  color: $charcoal-600;
+  line-height: 1.8;
+
+  @media (max-width: 600px) { grid-template-columns: 1fr; }
+}
+
+.detailSection {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: $charcoal-400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}

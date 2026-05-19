@@ -1,0 +1,110 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.page {
+  min-height: 100vh;
+  background: $cream-100;
+  padding-top: 6rem;
+  padding-bottom: 5rem;
+}
+
+.inner { @include container; }
+
+// ── 頁首 ────────────────────────────────────────────────────
+.pageHeader { margin-bottom: 3rem; }
+
+.eyebrow {
+  font-size: 0.75rem;
+  color: $gold-500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin: 0 0 0.5rem;
+}
+
+.heading {
+  font-family: $font-display;
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  font-weight: 600;
+  color: $charcoal-900;
+  margin: 0 0 1rem;
+}
+
+.desc {
+  font-size: 0.875rem;
+  color: $charcoal-500;
+  max-width: 28rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+// ── 分類 Tab 列 ──────────────────────────────────────────────
+.tabBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid $cream-300;
+  padding-bottom: 1rem;
+}
+
+.tab {
+  position: relative;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  background: $cream-200;
+  color: $charcoal-600;
+  transition: background 0.3s, color 0.3s;
+  font-family: $font-sans;
+
+  &:hover:not(.tabActive) { background: $cream-300; }
+
+  &.tabActive {
+    background: $gold-500;
+    color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+}
+
+// ── 商品數量 ────────────────────────────────────────────────
+.count {
+  font-size: 0.75rem;
+  color: $charcoal-400;
+  margin: 0 0 1.5rem;
+}
+
+// ── 商品 Grid ────────────────────────────────────────────────
+.productGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+
+  @include sm { grid-template-columns: repeat(2, 1fr); }
+  @include lg { grid-template-columns: repeat(3, 1fr); }
+  @include xl { grid-template-columns: repeat(4, 1fr); }
+}
+
+// ── 空狀態 ──────────────────────────────────────────────────
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6rem 0;
+  text-align: center;
+}
+
+.emptyTitle {
+  font-family: $font-display;
+  font-size: 1.25rem;
+  color: $charcoal-600;
+  margin: 0 0 0.5rem;
+}
+
+.emptyDesc {
+  font-size: 0.875rem;
+  color: $charcoal-400;
+  margin: 0;
+}

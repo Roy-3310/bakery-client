@@ -1,0 +1,131 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background: $cream-100;
+
+  @include lg {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+.inner { @include container; }
+
+// ── 標題列 ──────────────────────────────────────────────────
+.headerRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  color: $gold-500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin: 0 0 0.5rem;
+}
+
+.heading {
+  font-family: $font-display;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  color: $charcoal-900;
+  margin: 0;
+}
+
+// ── 捲動按鈕 ────────────────────────────────────────────────
+.scrollBtns {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+
+  @include md { display: flex; }
+}
+
+.scrollBtn {
+  width: 2.5rem; height: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid $charcoal-300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $charcoal-700;
+  background: none;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+
+  &:hover {
+    border-color: $gold-500;
+    color: $gold-500;
+  }
+
+  &:disabled {
+    border-color: $cream-300;
+    color: $cream-400;
+    cursor: default;
+  }
+}
+
+// ── 行動版橫向捲動 ──────────────────────────────────────────
+.mobileCarousel {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  margin-inline: -#{$px-mobile};
+  padding-inline: $px-mobile;
+
+  &::-webkit-scrollbar { display: none; }
+
+  @include md { display: none; }
+}
+
+.carouselItem {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 75vw;
+  max-width: 280px;
+}
+
+// ── 桌機 Grid ───────────────────────────────────────────────
+.desktopGrid {
+  display: none;
+
+  @include md {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  @include lg { grid-template-columns: repeat(4, 1fr); }
+}
+
+// ── 查看全部 CTA ─────────────────────────────────────────────
+.cta {
+  margin-top: 2.5rem;
+  text-align: center;
+}
+
+.ctaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: $charcoal-700;
+  text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover { color: $gold-500; }
+
+  span { transition: transform 0.2s; }
+  &:hover span { transform: translateX(4px); }
+}

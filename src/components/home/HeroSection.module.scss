@@ -1,0 +1,176 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// ── 全螢幕容器 ──────────────────────────────────────────────
+.section {
+  position: relative;
+  height: 100vh;
+  min-height: 640px;
+  max-height: 1000px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+// ── 背景圖 + 視差層 ─────────────────────────────────────────
+.bgWrapper {
+  position: absolute;
+  inset: 0;
+  transform: scale(1.1);
+}
+
+.bgImage {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+.overlayH {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba($charcoal-900, 0.75),
+    rgba($charcoal-900, 0.50),
+    transparent
+  );
+}
+
+.overlayV {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba($charcoal-900, 0.40),
+    transparent,
+    transparent
+  );
+}
+
+// ── 文字內容 ────────────────────────────────────────────────
+.content {
+  position: relative;
+  z-index: 10;
+  @include container;
+  width: 100%;
+}
+
+.textBlock { max-width: 42rem; }
+
+// eyebrow
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.eyebrowLine {
+  height: 1px;
+  width: 2.5rem;
+  background: $gold-500;
+  flex-shrink: 0;
+}
+
+.eyebrowText {
+  font-size: 0.75rem;
+  color: $gold-400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+// 主標題
+.heading {
+  font-family: $font-display;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 600;
+  color: white;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.5rem;
+}
+
+.headingAccent {
+  font-style: normal;
+  color: $gold-400;
+}
+
+// 副標題
+.subheading {
+  font-size: clamp(0.9rem, 2vw, 1.125rem);
+  color: rgba($cream-300, 0.9);
+  line-height: 1.7;
+  margin: 0 0 2.5rem;
+  max-width: 28rem;
+}
+
+// CTA 按鈕群
+.ctaGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  background: $gold-500;
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: background 0.3s $ease-apple, box-shadow 0.3s $ease-apple;
+
+  &:hover {
+    background: $gold-400;
+    box-shadow: 0 8px 24px rgba($gold-500, 0.3);
+  }
+}
+
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  font-size: 0.875rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  backdrop-filter: blur(4px);
+  transition: border-color 0.3s, color 0.3s;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.8);
+    color: white;
+  }
+}
+
+// ── Scroll 指示器 ────────────────────────────────────────────
+.scrollIndicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.scrollLabel {
+  font-size: 0.625rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 2rem;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+}

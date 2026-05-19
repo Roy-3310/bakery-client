@@ -1,0 +1,236 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+$sidebar-width: 240px;
+
+// ── 整體佈局 ─────────────────────────────────────────────────
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: $cream-100;
+}
+
+// ── 桌機側邊欄 ───────────────────────────────────────────────
+.sidebar {
+  display: none;
+  flex-direction: column;
+  width: $sidebar-width;
+  min-height: 100vh;
+  background: $charcoal-900;
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 40;
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+
+  @include lg { display: flex; }
+}
+
+// ── 行動版覆層 + 側邊欄 ──────────────────────────────────────
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 39;
+
+  @include lg { display: none; }
+}
+
+.mobileSidebar {
+  display: flex;
+  flex-direction: column;
+  width: $sidebar-width;
+  min-height: 100vh;
+  background: $charcoal-900;
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 40;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+
+  @include lg { display: none; }
+}
+
+.mobileSidebarOpen {
+  transform: translateX(0);
+}
+
+// ── 側邊欄共用元素 ───────────────────────────────────────────
+.sidebarLogo {
+  padding: 1.75rem 1.5rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.logoName {
+  display: block;
+  font-family: $font-display;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: $cream-50;
+  letter-spacing: 0.025em;
+}
+
+.logoSub {
+  display: block;
+  font-size: 0.625rem;
+  color: $gold-400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.userAvatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: $gold-600;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.userName {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: $cream-100;
+  margin-bottom: 0.25rem;
+}
+
+.roleBadge {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+}
+
+.adminBadge {
+  background: rgba($gold-500, 0.2);
+  color: $gold-400;
+}
+
+.staffBadge {
+  background: rgba($charcoal-300, 0.15);
+  color: $charcoal-300;
+}
+
+// ── 導覽 ─────────────────────────────────────────────────────
+.nav {
+  flex: 1;
+  padding: 1rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0.875rem;
+  border-radius: 0.625rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: rgba($cream-300, 0.65);
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: $cream-100;
+  }
+}
+
+.navItemActive {
+  background: rgba($gold-500, 0.15) !important;
+  color: $gold-400 !important;
+  font-weight: 500;
+}
+
+.navIcon {
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+// ── 側邊欄底部 ───────────────────────────────────────────────
+.sidebarFooter {
+  padding: 1rem 0.75rem 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  width: 100%;
+  padding: 0.75rem 0.875rem;
+  border-radius: 0.625rem;
+  background: none;
+  border: none;
+  font-size: 0.875rem;
+  color: rgba($cream-300, 0.5);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+
+  &:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: #fca5a5;
+  }
+}
+
+// ── 主要內容 ─────────────────────────────────────────────────
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  @include lg { margin-left: $sidebar-width; }
+}
+
+.mobileHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: white;
+  border-bottom: 1px solid $cream-300;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+
+  @include lg { display: none; }
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: $charcoal-700;
+  display: flex;
+  align-items: center;
+  padding: 0.25rem;
+}
+
+.mobileTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $charcoal-800;
+}
+
+.content {
+  flex: 1;
+  padding: 2rem 1.5rem;
+
+  @include lg { padding: 2.5rem 2rem; }
+}

@@ -1,0 +1,128 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background: $cream-200;
+
+  @include lg {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+.inner { @include container; }
+
+// ── 雙欄佈局 ────────────────────────────────────────────────
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: center;
+
+  @include lg {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6rem;
+  }
+}
+
+// ── 圖片欄 ──────────────────────────────────────────────────
+.imageCol { position: relative; }
+
+.imageWrapper {
+  aspect-ratio: 4 / 5;
+  border-radius: 1rem;
+  overflow: hidden;
+
+  img { width: 100%; height: 100%; object-fit: cover; }
+}
+
+.floatingBadge {
+  position: absolute;
+  bottom: -1.5rem;
+  right: -1rem;
+  background: $charcoal-900;
+  color: $cream-100;
+  padding: 1.25rem 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+
+  @include lg { right: -2rem; }
+}
+
+.badgeNumber {
+  font-family: $font-display;
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: $gold-400;
+  margin: 0;
+  line-height: 1;
+}
+
+.badgeLabel {
+  font-size: 0.75rem;
+  color: $charcoal-400;
+  margin-top: 0.125rem;
+  letter-spacing: 0.05em;
+}
+
+// ── 文字欄 ──────────────────────────────────────────────────
+.eyebrow {
+  font-size: 0.75rem;
+  color: $gold-500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin: 0 0 0.75rem;
+}
+
+.heading {
+  font-family: $font-display;
+  font-size: clamp(1.75rem, 3.5vw, 3rem);
+  font-weight: 600;
+  color: $charcoal-900;
+  line-height: 1.35;
+  margin: 0 0 1.5rem;
+}
+
+.desc {
+  font-size: 0.875rem;
+  color: $charcoal-500;
+  line-height: 1.75;
+  max-width: 22rem;
+  margin: 0 0 2.5rem;
+}
+
+// ── 四大支柱 Grid ────────────────────────────────────────────
+.pillarsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.pillar {
+  padding: 1rem;
+  background: $cream-100;
+  border-radius: 0.75rem;
+  border: 1px solid $cream-300;
+}
+
+.pillarIcon {
+  font-size: 1.25rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.pillarTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $charcoal-900;
+  margin: 0 0 0.25rem;
+}
+
+.pillarDesc {
+  font-size: 0.6875rem;
+  color: $charcoal-500;
+  line-height: 1.6;
+  margin: 0;
+}

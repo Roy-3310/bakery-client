@@ -1,0 +1,44 @@
+// ============================================================
+// Design Tokens — 全站色票、字型、間距、斷點
+// ============================================================
+
+// --- 色票：cream (背景層) ---
+$cream-50:  #FEFDF9;
+$cream-100: #FAF8F4;
+$cream-200: #F2EDE5;
+$cream-300: #E8E2D6;
+$cream-400: #D6CEBC;
+
+// --- 色票：gold (主強調色) ---
+$gold-300: #E2CA98;
+$gold-400: #D4B87A;
+$gold-500: #C9A96E;
+$gold-600: #B8924A;
+$gold-700: #9A7A3A;
+
+// --- 色票：charcoal (文字色階) ---
+$charcoal-300: #D6D3D1;
+$charcoal-400: #A8A29E;
+$charcoal-500: #78716C;
+$charcoal-600: #57534E;
+$charcoal-700: #44403C;
+$charcoal-800: #292524;
+$charcoal-900: #1C1917;
+
+// --- 字型 ---
+$font-display: 'Playfair Display', Georgia, serif;
+$font-sans:    Inter, system-ui, sans-serif;
+
+// --- 版面 ---
+$max-width:   80rem;    // 1280px
+$px-mobile:   1.5rem;   // 小螢幕水平 padding
+$px-desktop:  2.5rem;   // lg 以上水平 padding
+
+// --- 斷點 ---
+$bp-sm: 640px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+
+// --- 動態緩動 ---
+$ease-apple: cubic-bezier(0.25, 0.46, 0.45, 0.94);

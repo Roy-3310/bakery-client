@@ -1,0 +1,167 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.pageHeader {
+  margin-bottom: 2rem;
+}
+
+.heading {
+  font-family: $font-display;
+  font-size: 1.625rem;
+  font-weight: 600;
+  color: $charcoal-900;
+  margin-bottom: 0.25rem;
+}
+
+.subheading {
+  font-size: 0.875rem;
+  color: $charcoal-400;
+}
+
+// ── 統計卡片 ─────────────────────────────────────────────────
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.statCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 1rem;
+  border: 1px solid $cream-200;
+  text-decoration: none;
+  transition: box-shadow 0.2s, border-color 0.2s;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    border-color: $cream-300;
+  }
+}
+
+.statIcon {
+  width: 44px; height: 44px;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  &.gold { background: rgba($gold-500, 0.12); color: $gold-600; }
+  &.blue { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+  &.green { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+}
+
+.statLabel {
+  font-size: 0.75rem;
+  color: $charcoal-400;
+  margin-bottom: 0.25rem;
+}
+
+.statValue {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: $charcoal-900;
+  line-height: 1;
+}
+
+// ── 最近訂單區塊 ─────────────────────────────────────────────
+.section {
+  background: white;
+  border-radius: 1rem;
+  border: 1px solid $cream-200;
+  overflow: hidden;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid $cream-200;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: $charcoal-900;
+}
+
+.sectionLink {
+  font-size: 0.8125rem;
+  color: $gold-600;
+  text-decoration: none;
+  font-weight: 500;
+
+  &:hover { color: $gold-500; }
+}
+
+.loadingRow,
+.emptyRow {
+  padding: 3rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: $charcoal-400;
+}
+
+// ── 表格 ──────────────────────────────────────────────────────
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th, td {
+    padding: 0.875rem 1.25rem;
+    text-align: left;
+    font-size: 0.875rem;
+  }
+
+  th {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: $charcoal-400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-bottom: 1px solid $cream-200;
+  }
+
+  tr:not(:last-child) td { border-bottom: 1px solid $cream-100; }
+
+  td { color: $charcoal-700; }
+}
+
+.orderNumber {
+  font-family: monospace;
+  font-size: 0.8125rem !important;
+  color: $charcoal-500 !important;
+}
+
+.dateCell {
+  color: $charcoal-400 !important;
+  font-size: 0.8125rem !important;
+  white-space: nowrap;
+}
+
+// ── 狀態 Badge ───────────────────────────────────────────────
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.625rem;
+  border-radius: 9999px;
+
+  &.orange { background: #fef3c7; color: #92400e; }
+  &.blue   { background: #dbeafe; color: #1e40af; }
+  &.purple { background: #ede9fe; color: #5b21b6; }
+  &.green  { background: #d1fae5; color: #065f46; }
+  &.gray   { background: $cream-200; color: $charcoal-500; }
+  &.red    { background: #fee2e2; color: #991b1b; }
+}

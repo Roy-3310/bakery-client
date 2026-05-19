@@ -1,0 +1,66 @@
+// ============================================================
+// Mixins — RWD 斷點、容器、共用樣式片段
+// ============================================================
+@use 'variables' as *;
+
+// --- 斷點 ---
+@mixin sm  { @media (min-width: #{$bp-sm})  { @content; } }
+@mixin md  { @media (min-width: #{$bp-md})  { @content; } }
+@mixin lg  { @media (min-width: #{$bp-lg})  { @content; } }
+@mixin xl  { @media (min-width: #{$bp-xl})  { @content; } }
+
+// --- 版面容器 ---
+@mixin container {
+  max-width: $max-width;
+  margin-inline: auto;
+  padding-inline: $px-mobile;
+  @include lg { padding-inline: $px-desktop; }
+}
+
+// --- 小標題 eyebrow (金色 + 全大寫 + 寬字距) ---
+@mixin eyebrow {
+  font-size: 0.75rem;
+  color: $gold-500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+// --- 表單輸入框 ---
+@mixin form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid $cream-300;
+  background: $cream-50;
+  font-size: 0.875rem;
+  color: $charcoal-800;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+
+  &::placeholder { color: $charcoal-400; }
+
+  &:focus {
+    border-color: $gold-500;
+    box-shadow: 0 0 0 3px rgba($gold-500, 0.15);
+  }
+}
+
+// --- 金色主要按鈕 ---
+@mixin btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 1.75rem;
+  background: $gold-500;
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background 0.3s $ease-apple, box-shadow 0.3s $ease-apple;
+
+  &:hover { background: $gold-400; }
+  &:disabled { background: $cream-300; color: $charcoal-400; cursor: not-allowed; }
+}

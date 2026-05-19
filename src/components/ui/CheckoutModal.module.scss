@@ -1,0 +1,258 @@
+@use '../../styles/variables' as *;
+
+// ── 遮罩 ────────────────────────────────────────────────────
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba($charcoal-900, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+// ── 彈窗主體 ────────────────────────────────────────────────
+.modal {
+  position: fixed;
+  z-index: 61;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 2rem);
+  max-width: 32rem;
+  max-height: 90dvh;
+  overflow-y: auto;
+  background: $cream-50;
+  border-radius: 1.25rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  padding: 1.75rem;
+}
+
+// ── 標題列 ──────────────────────────────────────────────────
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.title {
+  font-family: $font-display;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: $charcoal-900;
+  margin: 0;
+}
+
+.closeBtn {
+  padding: 0.375rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: $charcoal-400;
+  transition: color 0.2s;
+
+  &:hover { color: $charcoal-800; }
+}
+
+// ── 訂單摘要 ────────────────────────────────────────────────
+.summary {
+  background: $cream-200;
+  border-radius: 0.75rem;
+  padding: 0.875rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.summaryRows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  margin-bottom: 0.625rem;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+  color: $charcoal-600;
+}
+
+.summaryName {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 0.5rem;
+}
+
+.summaryPrice {
+  font-weight: 500;
+  color: $charcoal-800;
+  flex-shrink: 0;
+}
+
+.summaryTotal {
+  display: flex;
+  justify-content: space-between;
+  font-family: $font-display;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: $charcoal-900;
+  border-top: 1px solid $cream-400;
+  padding-top: 0.625rem;
+}
+
+// ── 表單 ────────────────────────────────────────────────────
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+
+  @media (max-width: $bp-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: $charcoal-600;
+}
+
+.input,
+.textarea {
+  padding: 0.625rem 0.875rem;
+  background: white;
+  border: 1px solid $cream-400;
+  border-radius: 0.625rem;
+  font-size: 0.875rem;
+  font-family: $font-sans;
+  color: $charcoal-900;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+
+  &::placeholder { color: $charcoal-300; }
+
+  &:focus {
+    border-color: $gold-500;
+    box-shadow: 0 0 0 3px rgba($gold-500, 0.12);
+  }
+}
+
+.textarea {
+  resize: none;
+  line-height: 1.5;
+}
+
+// ── 錯誤訊息 ────────────────────────────────────────────────
+.error {
+  font-size: 0.8125rem;
+  color: #dc2626;
+  margin: 0;
+}
+
+// ── 送出按鈕 ────────────────────────────────────────────────
+.submitBtn {
+  width: 100%;
+  padding: 0.875rem;
+  background: $gold-500;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  font-family: $font-sans;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: background 0.2s, box-shadow 0.2s, opacity 0.2s;
+  margin-top: 0.25rem;
+
+  &:hover:not(:disabled) {
+    background: $gold-400;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+// ── 成功畫面 ────────────────────────────────────────────────
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0.5rem 0;
+  gap: 0.5rem;
+}
+
+.successIcon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: $cream-200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.successTitle {
+  font-family: $font-display;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: $charcoal-900;
+  margin: 0;
+}
+
+.successDesc {
+  font-size: 0.875rem;
+  color: $charcoal-500;
+  margin: 0;
+}
+
+.orderNumber {
+  font-size: 0.875rem;
+  color: $charcoal-600;
+  background: $cream-200;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  margin: 0.25rem 0 0.5rem;
+
+  strong {
+    font-family: $font-display;
+    color: $gold-600;
+    letter-spacing: 0.03em;
+  }
+}
+
+.doneBtn {
+  width: 100%;
+  max-width: 12rem;
+  padding: 0.75rem;
+  background: $gold-500;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  font-family: $font-sans;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 0.25rem;
+
+  &:hover { background: $gold-400; }
+}
