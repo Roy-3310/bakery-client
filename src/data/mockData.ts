@@ -1,4 +1,4 @@
-import type { Product, CategoryTab, NavLink } from "../types";
+import type { CategoryTab, NavLink } from "../types";
 
 export const categoryTabs: CategoryTab[] = [
   { value: "all", label: "全部商品" },
