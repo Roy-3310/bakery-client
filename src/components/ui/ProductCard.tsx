@@ -7,6 +7,7 @@ import styles from './ProductCard.module.scss'
 interface ProductCardProps {
   product: Product
   index?: number
+  priority?: boolean
 }
 
 const BADGE_CLASS: Record<string, string> = {
@@ -16,7 +17,7 @@ const BADGE_CLASS: Record<string, string> = {
   '新品': styles.badgeNew,
 }
 
-export default function ProductCard({ product, index = 0 }: ProductCardProps) {
+export default function ProductCard({ product, index = 0, priority = false }: ProductCardProps) {
   const { addItem } = useCart()
   const [added, setAdded] = useState(false)
   const [imgLoaded, setImgLoaded] = useState(false)
@@ -35,8 +36,10 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
   return (
     <motion.article
       initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
+      {...(priority
+        ? { animate: { opacity: 1, y: 0 } }
+        : { whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-60px' } }
+      )}
       transition={{
         duration: 0.6,
         delay: (index % 4) * 0.08,
@@ -50,7 +53,9 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
         <motion.img
           src={product.image}
           alt={product.name}
-          loading="lazy"
+          loading={priority ? 'eager' : 'lazy'}
+          fetchPriority={priority ? 'high' : 'auto'}
+          decoding="async"
           onLoad={() => setImgLoaded(true)}
           className={`${styles.cardImage} ${imgLoaded ? styles.visible : styles.hidden}`}
           whileHover={{ scale: 1.06 }}

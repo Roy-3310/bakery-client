@@ -93,7 +93,7 @@ export default function ShopPage() {
               className={styles.productGrid}
             >
               {filtered.map((product, i) => (
-                <ProductCard key={product.id} product={product} index={i} />
+                <ProductCard key={product.id} product={product} index={i} priority={i < 4} />
               ))}
             </motion.div>
           </AnimatePresence>
