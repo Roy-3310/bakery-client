@@ -18,8 +18,8 @@
 | 語言 | TypeScript 5.5 |
 | 建置工具 | Vite 5.4 |
 | 路由 | React Router DOM 6.26 |
-| 動畫 | Framer Motion 11 + GSAP 3.15 |
-| 樣式 | SCSS + CSS Modules（搭配 Tailwind 工具類） |
+| 動畫 | Framer Motion 11 |
+| 樣式 | SCSS + CSS Modules |
 | 部署 | Vercel（`vercel.json` 設定） |
 
 ---
