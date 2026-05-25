@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { categoryTabs } from '../data/mockData'
-import { getProducts } from '../services/productService'
-import type { Product, ProductCategory, ServerProduct } from '../types'
-import ProductCard from '../components/ui/ProductCard'
-import styles from './ShopPage.module.scss'
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { categoryTabs } from "../data/mockData";
+import { getProducts } from "../services/productService";
+import type { Product, ProductCategory, ServerProduct } from "../types";
+import ProductCard from "../components/ui/ProductCard";
+import styles from "./ShopPage.module.scss";
 
 function toProduct(p: ServerProduct): Product {
   return {
@@ -19,25 +19,25 @@ function toProduct(p: ServerProduct): Product {
     stock: p.stock,
     isFeatured: p.isFeatured,
     badge: p.badge ?? undefined,
-  }
+  };
 }
 
 export default function ShopPage() {
-  const [activeCategory, setActiveCategory] = useState<ProductCategory>('all')
-  const [products, setProducts] = useState<Product[]>([])
-  const [loading, setLoading] = useState(true)
+  const [activeCategory, setActiveCategory] = useState<ProductCategory>("all");
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getProducts({ limit: '100' })
-      .then(data => setProducts(data.products.map(toProduct)))
+    getProducts({ limit: "100" })
+      .then((data) => setProducts(data.products.map(toProduct)))
       .catch(() => setProducts([]))
-      .finally(() => setLoading(false))
-  }, [])
+      .finally(() => setLoading(false));
+  }, []);
 
   const filtered =
-    activeCategory === 'all'
+    activeCategory === "all"
       ? products
-      : products.filter(p => p.category === activeCategory)
+      : products.filter((p) => p.category === activeCategory);
 
   return (
     <main className={styles.page}>
@@ -64,11 +64,11 @@ export default function ShopPage() {
           transition={{ delay: 0.2, duration: 0.6 }}
           className={styles.tabBar}
         >
-          {categoryTabs.map(tab => (
+          {categoryTabs.map((tab) => (
             <button
               key={tab.value}
               onClick={() => setActiveCategory(tab.value)}
-              className={`${styles.tab} ${activeCategory === tab.value ? styles.tabActive : ''}`}
+              className={`${styles.tab} ${activeCategory === tab.value ? styles.tabActive : ""}`}
             >
               {tab.label}
             </button>
@@ -76,7 +76,12 @@ export default function ShopPage() {
         </motion.div>
 
         {loading ? (
-          <p className={styles.count}>載入中...</p>
+          <>
+            <p className={styles.count}>載入中...</p>
+            <p className={styles.count}>
+              請稍後，在Render部屬的server需要大約30秒的喚醒時間
+            </p>
+          </>
         ) : (
           <p className={styles.count}>共 {filtered.length} 款商品</p>
         )}
@@ -93,7 +98,12 @@ export default function ShopPage() {
               className={styles.productGrid}
             >
               {filtered.map((product, i) => (
-                <ProductCard key={product.id} product={product} index={i} priority={i < 4} />
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  index={i}
+                  priority={i < 4}
+                />
               ))}
             </motion.div>
           </AnimatePresence>
@@ -111,5 +121,5 @@ export default function ShopPage() {
         )}
       </div>
     </main>
-  )
+  );
 }

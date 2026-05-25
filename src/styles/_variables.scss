@@ -3,36 +3,39 @@
 // ============================================================
 
 // --- 色票：cream (背景層) ---
-$cream-50:  #FEFDF9;
-$cream-100: #FAF8F4;
-$cream-200: #F2EDE5;
-$cream-300: #E8E2D6;
-$cream-400: #D6CEBC;
+$cream-50: #fefdf9;
+$cream-100: #faf8f4;
+$cream-200: #f2ede5;
+$cream-300: #e8e2d6;
+$cream-400: #d6cebc;
 
 // --- 色票：gold (主強調色) ---
-$gold-300: #E2CA98;
-$gold-400: #D4B87A;
-$gold-500: #C9A96E;
-$gold-600: #B8924A;
-$gold-700: #9A7A3A;
+$gold-300: #e2ca98;
+$gold-400: #d4b87a;
+$gold-500: #c9a96e;
+$gold-600: #b8924a;
+$gold-700: #9a7a3a;
 
 // --- 色票：charcoal (文字色階) ---
-$charcoal-300: #D6D3D1;
-$charcoal-400: #A8A29E;
-$charcoal-500: #78716C;
-$charcoal-600: #57534E;
-$charcoal-700: #44403C;
+$charcoal-300: #d6d3d1;
+$charcoal-400: #a8a29e;
+$charcoal-500: #78716c;
+$charcoal-600: #57534e;
+$charcoal-700: #44403c;
 $charcoal-800: #292524;
-$charcoal-900: #1C1917;
+$charcoal-900: #1c1917;
+
+// --- 色票：notice ---
+$notice: #ff0000;
 
 // --- 字型 ---
-$font-display: 'Playfair Display', Georgia, serif;
-$font-sans:    Inter, system-ui, sans-serif;
+$font-display: "Playfair Display", Georgia, serif;
+$font-sans: Inter, system-ui, sans-serif;
 
 // --- 版面 ---
-$max-width:   80rem;    // 1280px
-$px-mobile:   1.5rem;   // 小螢幕水平 padding
-$px-desktop:  2.5rem;   // lg 以上水平 padding
+$max-width: 80rem; // 1280px
+$px-mobile: 1.5rem; // 小螢幕水平 padding
+$px-desktop: 2.5rem; // lg 以上水平 padding
 
 // --- 斷點 ---
 $bp-sm: 640px;

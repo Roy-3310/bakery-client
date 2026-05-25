@@ -1,5 +1,5 @@
-@use '../styles/variables' as *;
-@use '../styles/mixins' as *;
+@use "../styles/variables" as *;
+@use "../styles/mixins" as *;
 
 .page {
   min-height: 100vh;
@@ -8,10 +8,14 @@
   padding-bottom: 5rem;
 }
 
-.inner { @include container; }
+.inner {
+  @include container;
+}
 
 // ── 頁首 ────────────────────────────────────────────────────
-.pageHeader { margin-bottom: 3rem; }
+.pageHeader {
+  margin-bottom: 3rem;
+}
 
 .eyebrow {
   font-size: 0.75rem;
@@ -57,15 +61,19 @@
   cursor: pointer;
   background: $cream-200;
   color: $charcoal-600;
-  transition: background 0.3s, color 0.3s;
+  transition:
+    background 0.3s,
+    color 0.3s;
   font-family: $font-sans;
 
-  &:hover:not(.tabActive) { background: $cream-300; }
+  &:hover:not(.tabActive) {
+    background: $cream-300;
+  }
 
   &.tabActive {
     background: $gold-500;
     color: white;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -75,6 +83,11 @@
   color: $charcoal-400;
   margin: 0 0 1.5rem;
 }
+.notice {
+  font-size: 0.75rem;
+  color: $notice;
+  margin: 0 0 1.5rem;
+}
 
 // ── 商品 Grid ────────────────────────────────────────────────
 .productGrid {
@@ -82,9 +95,15 @@
   grid-template-columns: 1fr;
   gap: 1.5rem;
 
-  @include sm { grid-template-columns: repeat(2, 1fr); }
-  @include lg { grid-template-columns: repeat(3, 1fr); }
-  @include xl { grid-template-columns: repeat(4, 1fr); }
+  @include sm {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include lg {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include xl {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 // ── 空狀態 ──────────────────────────────────────────────────
